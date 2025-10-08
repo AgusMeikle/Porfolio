@@ -1,11 +1,73 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Badge from "../components/Badge.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import SocialPill from "../components/SocialPill.astro";
+import Briefcase from "../icons/Briefcase.astro";
+import Code from "../icons/Code.astro";
+import GitHub from "../icons/GitHubIcon.astro";
+import LinkedIn from "../icons/LinkedInIcon.astro";
+import Mail from "../icons/MailIcon.astro";
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <main class="px-4">
+    <SectionContainer class:list={"py-44 pb-32"}>
+      <h1
+        class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10"
+      >
+        Hey, soy Agustin Meikle 
+        <a
+          href="https://www.linkedin.com/in/agustin-meikle/"
+          target="_blank"
+          rel="noopener"
+          class="flex justify-center items-center"
+        >
+          <!-- <Badge>Disponible para trabajar</Badge> -->
+        </a>
+      </h1>
+      <h2 class="text-xl lg:text-2xl opacity-90 text-wrap max-w-[700px]">
+        <span class="text-white">+1 año de experiencia.</span>
+        <span class="text-green-200">Desarrollador Web.</span>
+        <span class="text-blue-200">De Mar del Plata, Argentina.</span>
+        <span class="opacity-65">Especializado en crear aplicaciones únicas.</span>
+      </h2>
+
+      <nav class="flex gap-4 mt-8 flex-wrap">
+        <SocialPill href="https://www.linkedin.com/in/agustin-meikle/">
+          <LinkedIn class:list={["size-4 md:size-6 mr-2"]} />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/AgusMeikle">
+          <GitHub class:list={["size-4 md:size-6 mr-2"]} />
+          GitHub
+        </SocialPill>
+        <SocialPill href="mailto:agusmeikle@gmail.com">
+          <Mail class:list={["size-4 md:size-6 mr-2"]} />
+          agusmeikle@gmail.com
+        </SocialPill>
+      </nav>
+    </SectionContainer>
+
+    <SectionContainer id="experiencia">
+      <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+        <Briefcase class:list={["size-7"]} />
+        Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center">
+        <Code class:list={["size-7"]} />
+        Proyectos
+      </h2>
+      <Projects />
+    </SectionContainer>
+  </main>
 </Layout>
