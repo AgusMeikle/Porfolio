@@ -2,6 +2,13 @@
 import Html from "../icons/HtmlIcon.astro";
 import Css from "../icons/Css.astro";
 import Scss from "../icons/Scss.astro";
+import LinkButton from "./LinkButton.astro";
+import GitHubIcon from "../icons/GitHubIcon.astro";
+import Link from "../icons/Link.astro";
+import Angular from "../icons/Angular.astro";
+import MySql from "../icons/MySql.astro";
+import NodeJS from "../icons/NodeJS.astro";
+import JavaScript from "../icons/JavaScript.astro";
 
 const TAGS = {
   HTML: {
@@ -19,6 +26,26 @@ const TAGS = {
     class: "bg-pink-500/20 text-pink-400 border-pink-400/30",
     icon: Scss,
   },
+  ANGULAR: {
+    name: "Angular",
+    class: "bg-red-500/20 text-red-400 border-red-400/30",
+    icon: Angular,
+  },
+  MYSQL: {
+    name: "MySQL",
+    class: "bg-blue-500/20 text-white border-blue-400/30",
+    icon: MySql,
+  },
+  NODEJS: {
+    name: "NodeJS",
+    class: "bg-green-600/20 text-green-500 border-green-400/30",
+    icon: NodeJS,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-yellow-500/20 text-yellow-400 border-yellow-400/30",
+    icon: JavaScript,
+  },
 };
 
 const PROJECTS = [
@@ -31,29 +58,64 @@ const PROJECTS = [
     image: "/Projects/CebateScreen.webp",
     tags: [TAGS.HTML, TAGS.CSS, TAGS.SCSS],
   },
+  {
+    title: "AFRAM - Group",
+    description:
+      "Un sistema de Home Banking ofreciendo una experiencia de usuario fluida y segura.",
+    link: "https://svgl.vercel.app/",
+    github: "https://github.com/pheralb/svgl",
+    image: "/Projects/AFRAMScreen.webp",
+    tags: [TAGS.ANGULAR, TAGS.MYSQL, TAGS.NODEJS, TAGS.JAVASCRIPT],
+  },
 ];
 ---
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+    </div>
+  </div>
 
-{
-  PROJECTS.map(({ title, description, tags, image }) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-green-200 mb-2">{title}</h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
-        {tags.map((tag) => (
-          <li>
-            <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-white/10"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${title}`}
-      />
-    </article>
-  ))
-}
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHubIcon class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
