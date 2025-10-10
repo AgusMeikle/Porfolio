@@ -48,7 +48,32 @@ const TAGS = {
   },
 };
 
+const COLABS = [
+  {
+    name: "Francisco Pedrosa",
+    link: "https://www.linkedin.com/in/fran-pedrosa/",
+  },
+  {
+    name: "Agustina Hourcade",
+    link: "https://www.linkedin.com/in/agustinahourcade/",
+  },
+  {
+    name: "Mateo Vaccaro",
+    link: "https://www.linkedin.com/in/mateo-vaccaro-20b4862a3/",
+  },
+];
+
 const PROJECTS = [
+  {
+    title: "AFRAM - Group",
+    description:
+      "Un sistema de Home Banking ofreciendo una experiencia de usuario fluida y segura. Donde puede crear y gestionar cuentas, realizar transferencias, visualizar transacciones y más. <em>Proyecto realizado en equipo.</em>",
+    colabs: [COLABS[0], COLABS[1], COLABS[2]],
+    link: "https://youtu.be/iQ0bQvBdtXQ?si=qyUShoVZ4FqYROe2",
+    github: "https://github.com/AgustinaHourcade/AFRAM-Group",
+    image: "/Projects/AFRAMScreen.webp",
+    tags: [TAGS.ANGULAR, TAGS.MYSQL, TAGS.NODEJS, TAGS.JAVASCRIPT],
+  },
   {
     title: "Cebate",
     description:
@@ -58,64 +83,81 @@ const PROJECTS = [
     image: "/Projects/CebateScreen.webp",
     tags: [TAGS.HTML, TAGS.CSS, TAGS.SCSS],
   },
-  {
-    title: "AFRAM - Group",
-    description:
-      "Un sistema de Home Banking ofreciendo una experiencia de usuario fluida y segura.",
-    link: "https://svgl.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/Projects/AFRAMScreen.webp",
-    tags: [TAGS.ANGULAR, TAGS.MYSQL, TAGS.NODEJS, TAGS.JAVASCRIPT],
-  },
 ];
 ---
+
 <div class="flex flex-col gap-y-16">
   {
-    PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-  <div class="w-full md:w-1/2">
-    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-      <img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
-    </div>
-  </div>
+    PROJECTS.map(
+      ({ image, title, description, tags, link, github, colabs = [] }) => (
+        <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+          <div class="w-full md:w-1/2">
+            <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+              <img
+                alt="Recién llegado vs 5 años en Nueva Zelanda"
+                class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+                loading="lazy"
+                src={image}
+              />
+            </div>
+          </div>
 
-  <div class="w-full md:w-1/2 md:max-w-lg">
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-      {title}
-    </h3>
-    <div class="flex flex-wrap mt-2">
-      <ul class="flex flex-row mb-2 gap-x-2">
-          {tags.map((tag) => (
-            <li>
-              <span
-                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-              >
-                <tag.icon class="size-4" />
-                {tag.name}
-              </span>
-            </li>
-          ))}
-        </ul>
+          <div class="w-full md:w-1/2 md:max-w-lg">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              {title}
+            </h3>
+            <div class="flex flex-wrap mt-2">
+              <ul class="flex flex-row mb-2 gap-x-2">
+                {tags.map((tag) => (
+                  <li>
+                    <span
+                      class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+                    >
+                      <tag.icon class="size-4" />
+                      {tag.name}
+                    </span>
+                  </li>
+                ))}
+              </ul>
 
-      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
-          {github && (
-            <LinkButton href={github}>
-              <GitHubIcon class="size-6" />
-              Code
-              
-            </LinkButton>
-          )}
-          {link && (
-            <LinkButton href={link}>
-              <Link class="size-4" />
-              Preview
-            </LinkButton>
-          )}
-        </footer>
-    </div>
-  </div>
-</article>
-    ))
+              <div class="mt-2 text-gray-700 dark:text-gray-400" set:html={description}>
+              </div>
+
+              {colabs.length > 0 && (
+                <ul class="flex flex-row gap-x-2 flex-wrap mt-2">
+                  {colabs.map((colab) => (
+                    <li>
+                      <a
+                        href={colab.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex gap-x-1 rounded-full text-xs bg-gray-500/20 text-gray-400 border-gray-400/30 py-1 px-2 hover:bg-gray-500/30 transition-colors"
+                      >
+                        <GitHubIcon class="size-4" />
+                        {colab.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <footer class="flex items-end justify-start mt-4 gap-x-4">
+                {github && (
+                  <LinkButton href={github}>
+                    <GitHubIcon class="size-6" />
+                    Code
+                  </LinkButton>
+                )}
+                {link && (
+                  <LinkButton href={link}>
+                    <Link class="size-4" />
+                    Preview
+                  </LinkButton>
+                )}
+              </footer>
+            </div>
+          </div>
+        </article>
+      )
+    )
   }
 </div>
