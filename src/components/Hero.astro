@@ -1,9 +1,8 @@
 ---
-import LinkedInIcon from "../icons/LinkedInIcon.astro";
-import MailIcon from "../icons/MailIcon.astro";
-import Badge from "./Badge.astro";
-import SocialPill from "./SocialPill.astro";
-import GitHub from "../icons/GitHubIcon.astro";
+import LinkedInIcon from "@/icons/LinkedInIcon.astro";
+import MailIcon from "@/icons/MailIcon.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import GitHub from "@/icons/GitHubIcon.astro";
 
 const personalImageAlt = "Agustín Meikle";
 ---
@@ -38,7 +37,7 @@ const personalImageAlt = "Agustín Meikle";
   <nav class="flex flex-wrap gap-4 mt-8">
     <SocialPill href="mailto:agusmeikle@gmail.com">
       <MailIcon class="size-4" />
-      Contactame
+      agusmeikle@gmail.com
     </SocialPill>
     <SocialPill href="https://www.linkedin.com/in/agustin-meikle/">
       <LinkedInIcon class="size-4" />
