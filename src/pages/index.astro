@@ -1,4 +1,5 @@
 ---
+import Skills from "@/components/Skills.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Experience from "../components/Experience.astro";
 import Hero from "../components/Hero.astro";
@@ -21,7 +22,7 @@ import Layout from "../layouts/Layout.astro";
         <slot />
       </Hero>
     </SectionContainer>
-    <div class="space-y-24">
+    <SectionContainer class="space-y-24">
       <SectionContainer id="experiencia">
         <TitleSection>
           <Briefcase class="size-8" />
@@ -29,13 +30,28 @@ import Layout from "../layouts/Layout.astro";
         </TitleSection>
         <Experience />
       </SectionContainer>
-      
+
       <SectionContainer id="proyectos">
         <TitleSection>
           <Code class="size-7" />
           Proyectos
         </TitleSection>
         <Projects />
+      </SectionContainer>
+
+      <!-- <SectionContainer id="habilidades">
+        <TitleSection>
+          <Code class="size-8" />
+          Habilidades
+        </TitleSection>
+        <Skills>
+      </SectionContainer> -->
+      <SectionContainer>
+        <TitleSection>
+          <Code class="size-8" />
+          Habilidades
+        </TitleSection>
+        <Skills />
       </SectionContainer>
 
       <SectionContainer id="sobre-mi">
@@ -45,6 +61,6 @@ import Layout from "../layouts/Layout.astro";
         </TitleSection>
         <AboutMe />
       </SectionContainer>
-    </div>
+    </SectionContainer>
   </main>
 </Layout>
