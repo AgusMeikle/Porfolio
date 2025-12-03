@@ -9,6 +9,7 @@ import Angular from "@/icons/Angular.astro";
 import MySql from "@/icons/MySql.astro";
 import NodeJS from "@/icons/NodeJS.astro";
 import JavaScript from "@/icons/JavaScript.astro";
+import LinkedInIcon from "@/icons/LinkedInIcon.astro";
 
 const TAGS = {
   HTML: {
@@ -65,9 +66,19 @@ const COLABS = [
 
 const PROJECTS = [
   {
+    title: "DigiPoint Electronics",
+    description:
+      "Plataforma de e-commerce mayorista. Fusiona un catálogo público intuitivo con un potente panel de administración para la gestión de inventario, usuarios y pedidos. Destaca por su integración con WhatsApp para agilizar el cierre de ventas.  <small>Proyecto realizado en equipo.</small>",
+    colabs: [COLABS[0], COLABS[1]],
+    link: "https://digipoint.com.ar/home",
+    github: "https://github.com/AgustinaHourcade/DigiPoint-Frontend",
+    image: "/Projects/DigiPointScreen.webp",
+    tags: [TAGS.ANGULAR, TAGS.MYSQL, TAGS.NODEJS],
+  },
+  {
     title: "AFRAM - Group",
     description:
-      "Un sistema de Home Banking ofreciendo una experiencia de usuario fluida y segura. Donde puede crear y gestionar cuentas, realizar transferencias, visualizar transacciones y más. <small>Proyecto realizado en equipo.</small>",
+      "Sistema de Home Banking ofreciendo una experiencia de usuario fluida y segura. Donde puede crear y gestionar cuentas, realizar transferencias, visualizar transacciones y más. <small>Proyecto realizado en equipo.</small>",
     colabs: [COLABS[0], COLABS[1], COLABS[2]],
     link: "https://youtu.be/iQ0bQvBdtXQ?si=qyUShoVZ4FqYROe2",
     github: "https://github.com/AgustinaHourcade/AFRAM-Group",
@@ -120,8 +131,10 @@ const PROJECTS = [
                 ))}
               </ul>
 
-              <div class="mt-2 text-gray-700 dark:text-gray-400" set:html={description}>
-              </div>
+              <div
+                class="mt-2 text-gray-700 dark:text-gray-400"
+                set:html={description}
+              ></div>
 
               {colabs.length > 0 && (
                 <ul class="flex flex-row gap-x-2 flex-wrap mt-2">
@@ -133,7 +146,7 @@ const PROJECTS = [
                         rel="noopener noreferrer"
                         class="flex gap-x-1 rounded-full text-xs bg-gray-500/20 text-gray-400 border-gray-400/30 py-1 px-2 hover:bg-gray-500/30 transition-colors"
                       >
-                        <GitHubIcon class="size-4" />
+                        <LinkedInIcon class="size-4" />
                         {colab.name}
                       </a>
                     </li>
