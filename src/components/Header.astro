@@ -29,15 +29,15 @@ const navItems = [
 ---
 
 <header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2"
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-2 px-2"
 >
   <nav
-    class="flex px-3 text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center"
+    class="flex px-2 md:px-3 text-xs md:text-sm font-medium rounded-full text-gray-600 dark:text-gray-200 justify-center items-center max-w-full"
   >
     {
       navItems.map((link) => (
         <a
-          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
+          class="relative block px-1 md:px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500 whitespace-nowrap text-center"
           aria-label={link.label}
           href={link.url}
         >
@@ -97,10 +97,6 @@ const navItems = [
     animation-range: 0 100px;
   }
 
-  nav {
-    dark: bg-gray-800/90 bg-white/50;
-  }
-
   @keyframes nav-shadown {
     0% {
       background-color: transparent;
@@ -111,12 +107,53 @@ const navItems = [
       backdrop-filter: blur(0px);
     }
     to {
-      background-color: rgba(31, 41, 55, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow:
         0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -2px rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(8px);
+    }
+  }
+
+  /* Dark mode animation */
+  @media (prefers-color-scheme: dark) {
+    @keyframes nav-shadown {
+      0% {
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0),
+          0 4px 6px -2px rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0px);
+      }
+      to {
+        background-color: rgba(31, 41, 55, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(8px);
+      }
+    }
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 640px) {
+    nav {
+      padding: 0 6px;
+    }
+    
+    nav a {
+      padding: 6px 3px;
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    nav a {
+      padding: 6px 2px;
+      font-size: 10px;
     }
   }
 </style>
